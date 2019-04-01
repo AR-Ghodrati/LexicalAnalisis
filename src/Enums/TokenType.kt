@@ -1,3 +1,5 @@
+package Enums
+
 enum class TokenType {
 
     //Ops

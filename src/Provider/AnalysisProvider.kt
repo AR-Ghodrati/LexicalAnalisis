@@ -2,10 +2,10 @@ package Provider
 
 import Utils.NFAUtil
 
-class AnalysisProvider {
+object AnalysisProvider {
 
     val TOKENS = mutableListOf(
-        "if", "int", "else"
+        "program", "print"
     )
 
     fun run() {
@@ -15,5 +15,11 @@ class AnalysisProvider {
 
     }
 
+
+}
+
+fun main() {
+
+    AnalysisProvider.run()
 
 }
