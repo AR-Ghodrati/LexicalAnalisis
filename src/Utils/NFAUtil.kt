@@ -1,20 +1,23 @@
 package Utils
 
-import Models.CustomTrie
 import Models.CustomTrieNode
 
 object NFAUtil {
 
-    private var root: CustomTrieNode = CustomTrieNode()
-    private lateinit var customTrie: CustomTrie
+    private var root: CustomTrieNode
+    private var NFATable: HashMap<Pair<Set<Int>, Char>, Int>
 
-    fun generateNFA(tokens: MutableList<String>) {
+    init {
+        root = CustomTrieNode()
+        NFATable = HashMap()
+    }
 
-        customTrie = CustomTrie(root)
+    fun generateNFA(tokens: MutableList<Pair<String, String>>) {
 
-        tokens.forEach { customTrie.insert(it) }
+        root = CustomTrieUtil.generateTree(root, tokens)
 
-        println(root)
+
+        println(root.children.keys)
 
 
 
