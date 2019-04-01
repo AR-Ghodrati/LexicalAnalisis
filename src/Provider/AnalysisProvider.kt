@@ -1,14 +1,16 @@
 package Provider
 
-import Utils.NFAUtil
+import Utils.NFAToDFAUtil
 import java.io.File
 
 object AnalysisProvider {
 
-    val TOKENS: MutableList<Pair<String, String>>
+    private val TOKENS: MutableList<Pair<String, String>>
+    private var DFATable: HashMap<Pair<Set<Int>, Char>, Set<Int>>
 
     init {
         TOKENS = ArrayList()
+        DFATable = HashMap()
     }
 
     fun run() {
@@ -20,7 +22,7 @@ object AnalysisProvider {
                 TOKENS.add(it.toLowerCase() to "T_${it.toLowerCase()}")
             }
 
-        NFAUtil.generateNFA(TOKENS)
+        DFATable = NFAToDFAUtil.generateDFATable(TOKENS)
 
 
     }
