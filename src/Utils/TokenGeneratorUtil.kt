@@ -1,24 +1,24 @@
 package Utils
 
-import Models.TokenType
+import Models.Token
 import java.io.File
 
 object TokenGeneratorUtil {
 
-    // Read Tokens From Input/tokens.txt
-    fun generate(): MutableList<TokenType> {
+    // Read Tokens From Input/TOKENS.txt
+    fun generate(): MutableList<Token> {
 
-        val token = mutableListOf<TokenType>()
+        val token = mutableListOf<Token>()
 
         // Generate Tokens
-        File("Input/tokens.txt")
+        File("Input/TOKENS.txt")
             .takeIf { it.exists() }
             ?.readLines()
             ?.forEach {
                 // Check If Not Comment
                 if (it.isNotEmpty() && !it.startsWith("#", false)) {
                     token.add(
-                        TokenType(
+                        Token(
                             "T_${it.split("->").first().trim().toUpperCase()}"
                             , it.split("->").last().trim().toInt()
                         )

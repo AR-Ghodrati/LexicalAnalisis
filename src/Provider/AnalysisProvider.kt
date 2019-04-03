@@ -1,17 +1,22 @@
 package Provider
 
-import Models.TokenType
+import Models.Token
+import Statics.SpecUtil
 import Utils.TokenGeneratorUtil
 
 
 object AnalysisProvider {
 
-    private lateinit var Tokens: MutableList<TokenType>
-
+    private lateinit var tokens: MutableList<Token>
+    private var Specs: SpecUtil = SpecUtil()
 
     fun run() {
-        Tokens = TokenGeneratorUtil.generate()
-        println(Tokens)
+
+        // Generate Data
+        tokens = TokenGeneratorUtil.generate()
+        Specs.generateSpecs()
+
+
     }
 }
 
