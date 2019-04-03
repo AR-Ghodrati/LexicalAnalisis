@@ -1,31 +1,22 @@
 package Provider
 
-import java.io.File
+import Models.TokenType
+import Utils.TokenGeneratorUtil
+
 
 object AnalysisProvider {
 
-    private val TOKENS: MutableList<Pair<String, String>>
+    private lateinit var Tokens: MutableList<TokenType>
 
 
-    init {
-        TOKENS = ArrayList()
-    }
-
-    fun run(strCode: String) {
-
-        // Generate Tokens
-        File("Input/tokens.txt")
-            .readLines()
-            .forEach {
-                TOKENS.add(it.toLowerCase() to "T_${it.toLowerCase()}")
-            }
-
-
+    fun run() {
+        Tokens = TokenGeneratorUtil.generate()
+        println(Tokens)
     }
 }
 
 fun main() {
 
-    AnalysisProvider.run("=")
+    AnalysisProvider.run()
 
 }
