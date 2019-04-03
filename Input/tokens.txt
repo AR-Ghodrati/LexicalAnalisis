@@ -1,19 +1,35 @@
-If
-else
-Int
-Start
-Print
-Program
-Then
-Read
-Repeat
-Return
-Void
-Var
-Do
-Dummy
-Float
-Finish
-==
-=>
-=!=
+# Tokens -> State Number
+
+# Primitives
+If -> 21
+Int -> 23
+Start -> 5
+Print -> 46
+Program -> 51
+Then -> 19
+Read -> 31
+Repeat -> 28
+Return -> 35
+Void -> 39
+Var -> 41
+# Do -> 23 // Must add
+Dummy -> 56
+Float -> 61
+Finish -> 11
+
+# Ops
+Assign -> 62
+Equal -> 65
+GreaterEqual -> 63
+NotEqual -> 67
+
+#Extra Ops
+Greater -> 69
+Lesser -> 68
+LesserEqual -> 64
+
+#Checkers
+Error -> -1
+EndOfToken -> 0
+ID -> 57
+ID_1 -> 58
