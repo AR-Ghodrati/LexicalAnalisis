@@ -9,9 +9,7 @@ class DFATable : Serializable {
         state   a
          0      57
      */
-    var states: HashMap<Pair<Int, String>, Int> = HashMap()
-
-
+    var regularStates: HashMap<Pair<Int, String>, Int> = HashMap()
     var finalStates: HashSet<Int> = HashSet()
 
 
@@ -21,21 +19,21 @@ class DFATable : Serializable {
 
         other as DFATable
 
-        if (states != other.states) return false
+        if (regularStates != other.regularStates) return false
         if (finalStates != other.finalStates) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = states.hashCode()
+        var result = regularStates.hashCode()
         result = 31 * result + finalStates.hashCode()
         return result
     }
 
 
     override fun toString(): String {
-        return "DFATable(states=$states, finalStates=$finalStates)"
+        return "DFATable(regularStates=$regularStates, finalStates=$finalStates)"
     }
 
 

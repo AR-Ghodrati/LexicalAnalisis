@@ -1,35 +1,33 @@
-# Tokens -> State Number
+# Tokens -> End State Number
 
 # Primitives
-If -> 21
-Int -> 23
-Start -> 5
-Print -> 46
-Program -> 51
-Then -> 19
-Read -> 31
-Repeat -> 28
-Return -> 35
-Void -> 39
-Var -> 41
-Do -> 23
-Dummy -> 56
-Float -> 61
-Finish -> 11
+If -> 16
+Int -> 18
+Start -> 9
+Print -> 51
+Program -> 56
+Then -> 4
+Read -> 33
+Repeat -> 36
+Return -> 40
+Void -> 46
+Var -> 43
+Do -> 66
+Dummy -> 14
+Float -> 28
+Finish -> 24
 
 # Ops
-Assign -> 62
-Equal -> 65
-GreaterEqual -> 63
-NotEqual -> 67
-
-#Extra Ops
-Greater -> 69
-Lesser -> 68
-LesserEqual -> 64
+Assign -> 57
+Equal -> 58
+StrangeNotEqual -> 60
+LesserEqual -> 62
 
 #Checkers
 Error -> -1
-EndOfToken -> 0
-ID -> 57
-ID_1 -> 58
+Start -> 0
+Identifier_Type_One -> 63
+Identifier_Type_Two -> 64
+
+#Extra
+ConstNumber -> 65

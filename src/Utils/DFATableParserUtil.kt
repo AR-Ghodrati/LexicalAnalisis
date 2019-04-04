@@ -41,7 +41,7 @@ object DFATableParserUtil {
                             .split("|")
                             .forEach {
 
-                                table.states[
+                                table.regularStates[
                                         lineCount to it.split(',')[0]
                                             .removePrefix("(")
                                 ] = it

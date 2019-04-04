@@ -1,26 +1,18 @@
 package Provider
 
-import Models.DFATable
-import Models.Token
 import Utils.DFATableParserUtil
+import Utils.ParserUtil
 import Utils.TokenParserUtil
 
 
 object AnalysisProvider {
 
-    private lateinit var tokens: HashSet<Token>
-    private lateinit var dfaTable: DFATable
-
-
     fun run() {
 
-        tokens = TokenParserUtil.parse()
-        dfaTable = DFATableParserUtil.parse()
+        val tokens = TokenParserUtil.parse()
+        val dfaTable = DFATableParserUtil.parse()
 
-
-        println(tokens.size)
-
-
+        ParserUtil.parse(dfaTable, tokens)
     }
 }
 
