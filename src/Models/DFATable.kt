@@ -5,7 +5,11 @@ import java.io.Serializable
 class DFATable : Serializable {
 
     // 2D Array
-    var values: MutableList<MutableList<Int>> = ArrayList()
+    /*
+        state   a
+         0      57
+     */
+    var values: HashMap<Pair<Int, String>, Int> = HashMap()
 
 
     override fun equals(other: Any?): Boolean {

@@ -11,23 +11,35 @@ object DFATableGeneratorUtil {
 
         // Generate Tokens
         val table = DFATable()
+        var lineCount = 0
+
+
+
 
         File("Input/DFA_TABLE.txt")
             .takeIf { it.exists() }
             ?.readLines()
-            ?.forEach {
+            ?.forEach { line ->
                 // Check If Not Comment
-                val states: MutableList<Int> = ArrayList()
+                if (line.isNotEmpty() && !line.startsWith("#", false)) {
 
-                if (it.isNotEmpty() && !it.startsWith("#", false)) {
+                    line
+                        .substring(line.indexOf("("))
+                        .split("|")
+                        .forEach {
 
-                    it.split(',').forEach { state ->
-                        states.add(state.toInt())
-                    }
-                    table.values.add(states)
+                            table.values[
+                                    lineCount to it.split(',')[0]
+                                        .removePrefix("(")
+                            ] = it
+                                .split(',')[1]
+                                .removeSuffix(")")
+                                .toInt()
+                        }
+
+                    lineCount++
                 }
             }
-
         return table
     }
 

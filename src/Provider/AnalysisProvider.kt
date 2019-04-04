@@ -1,20 +1,29 @@
 package Provider
 
 import Models.Token
-import Statics.SpecUtil
+import Utils.DFATableGeneratorUtil
 import Utils.TokenGeneratorUtil
 
 
 object AnalysisProvider {
 
-    private lateinit var tokens: MutableList<Token>
-    private var Specs: SpecUtil = SpecUtil()
+    private var tokens: MutableList<Token> = TokenGeneratorUtil.generate()
+    private var specs: SpecUtil = SpecUtil()
+
+    init {
+        specs.generateSpecs()
+    }
 
     fun run() {
 
-        // Generate Data
-        tokens = TokenGeneratorUtil.generate()
-        Specs.generateSpecs()
+
+        // ParserUtil.parse()
+        val table = DFATableGeneratorUtil.generate()
+        println(table)
+
+
+
+
 
 
     }
