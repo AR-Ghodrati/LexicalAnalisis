@@ -26,8 +26,8 @@ LesserEqual -> 62
 #Checkers
 Error -> -1
 Start -> 0
-Identifier_Type_One -> 63
-Identifier_Type_Two -> 64
+Identifier -> 63
+Identifier -> 64
 
 #Extra
 ConstNumber -> 65

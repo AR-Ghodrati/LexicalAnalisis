@@ -21,11 +21,24 @@ object ParserUtil {
 
                     current_State = dfaTable.regularStates[current_State to char.toString()]!!
 
-                    if (!dfaTable.finalStates.contains(current_State)) {
-                        println(current_State)
-                    } else
-                        println("Token Detected!!")
+                    if (!isEndOfToken(dfaTable)) {
+
+                    } else {
+
+                        println("${getToken(current_State, tokens)?.Name} Detected!!")
+
+                        //reset current_State
+                        //current_State = 0
+                    }
                 }
             }
+    }
+
+    private fun isEndOfToken(dfaTable: DFATable): Boolean {
+        return dfaTable.finalStates.any { it == current_State }
+    }
+
+    private fun getToken(state: Int, tokens: HashSet<Token>): Token? {
+        return tokens.find { it.State == state }
     }
 }
