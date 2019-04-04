@@ -31,7 +31,7 @@ object DFATableParserUtil {
                             .trim()
                             .split(',')
                             .forEach {
-                                table.finalStates.add(it.toInt())
+                                table.finalStates.add(it.trim().toInt())
                             }
 
                     } else {

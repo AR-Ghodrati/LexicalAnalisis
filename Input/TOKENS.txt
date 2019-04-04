@@ -12,7 +12,7 @@ Repeat -> 28
 Return -> 35
 Void -> 39
 Var -> 41
-# Do -> 23 // Must add
+Do -> 23
 Dummy -> 56
 Float -> 61
 Finish -> 11
