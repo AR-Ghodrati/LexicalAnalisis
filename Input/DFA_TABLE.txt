@@ -1,4 +1,4 @@
-#Final State Delegation  start With '%'
+#Final States Delegation : start With '%'
 % 4,9,14,16,18,24,28,32,36,40,43,46,51,56,57,58,60,62,63,64,65,66 %
 
 #State MoveTo ... (With-Char,To-State)

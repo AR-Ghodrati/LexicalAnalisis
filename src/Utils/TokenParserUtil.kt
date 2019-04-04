@@ -3,12 +3,12 @@ package Utils
 import Models.Token
 import java.io.File
 
-object TokenGeneratorUtil {
+object TokenParserUtil {
 
     // Read Tokens From Input/TOKENS.txt
-    fun generate(): MutableList<Token> {
+    fun parse(): HashSet<Token> {
 
-        val token = mutableListOf<Token>()
+        val token = hashSetOf<Token>()
 
         // Generate Tokens
         File("Input/TOKENS.txt")
