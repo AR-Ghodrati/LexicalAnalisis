@@ -4,8 +4,7 @@ import java.io.Serializable
 
 class DFATable : Serializable {
 
-    // 2D Array
-    /*
+    /* 2D Array
         state   a
          0      57
      */

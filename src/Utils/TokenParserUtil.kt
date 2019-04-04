@@ -9,6 +9,7 @@ object TokenParserUtil {
     fun parse(): HashSet<Token> {
 
         val token = hashSetOf<Token>()
+        println("Parsing Tokens...")
 
         // Generate Tokens
         File("Input/TOKENS.txt")

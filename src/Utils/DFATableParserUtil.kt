@@ -13,6 +13,7 @@ object DFATableParserUtil {
         val table = DFATable()
         var lineCount = 0
 
+        println("Paring DFA Table...")
 
 
 

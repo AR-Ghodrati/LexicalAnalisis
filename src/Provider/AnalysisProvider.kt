@@ -1,7 +1,7 @@
 package Provider
 
+import Utils.AnalysisUtil
 import Utils.DFATableParserUtil
-import Utils.ParserUtil
 import Utils.TokenParserUtil
 
 
@@ -12,7 +12,7 @@ object AnalysisProvider {
         val tokens = TokenParserUtil.parse()
         val dfaTable = DFATableParserUtil.parse()
 
-        ParserUtil.parse(dfaTable, tokens)
+        AnalysisUtil.analysis(dfaTable, tokens)
     }
 }
 

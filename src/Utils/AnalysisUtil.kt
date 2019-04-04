@@ -4,20 +4,22 @@ import Models.DFATable
 import Models.Token
 import java.io.File
 
-object ParserUtil {
+object AnalysisUtil {
 
 
     private var current_State: Int = 0 // Start State
 
-    fun parse(dfaTable: DFATable, tokens: HashSet<Token>) {
+    fun analysis(dfaTable: DFATable, tokens: HashSet<Token>) {
+
+        println("Analysing inputCode...\r\n")
 
         // Read Code Form INPUT_CODE.txt
         File("Input/INPUT_CODE.txt")
             .takeIf { it.exists() }
             ?.readLines()
-            ?.forEach { line ->
+            ?.forEachIndexed { indexLine, line ->
                 // Iterate All Chars
-                line.forEach { char ->
+                line.forEachIndexed { indexChar, char ->
 
                     current_State = dfaTable.regularStates[current_State to char.toString()]!!
 
@@ -25,10 +27,13 @@ object ParserUtil {
 
                     } else {
 
-                        println("${getToken(current_State, tokens)?.Name} Detected!!")
+                        println(
+                            "${getToken(
+                                current_State,
+                                tokens
+                            )?.Name} Detected at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} }"
+                        )
 
-                        //reset current_State
-                        //current_State = 0
                     }
                 }
             }
