@@ -9,7 +9,7 @@ object AnalysisUtil {
 
     private var current_State: Int = 0 // Start State
 
-    fun analysis(dfaTable: DFATable, tokens: HashSet<Token>) {
+    fun analysis(dfaTable: DFATable, tokens: HashSet<Token>, ignoreCase: Boolean) {
 
         println("Analysing inputCode...\r\n")
 
@@ -19,7 +19,9 @@ object AnalysisUtil {
             ?.readLines()
             ?.forEachIndexed { indexLine, line ->
                 // Iterate All Chars
-                line.forEachIndexed { indexChar, char ->
+                line
+                    .also { if (ignoreCase) it.toLowerCase() }
+                    .forEachIndexed { indexChar, char ->
 
                     current_State = dfaTable.regularStates[current_State to char.toString()]!!
 

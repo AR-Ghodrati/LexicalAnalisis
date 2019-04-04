@@ -7,17 +7,17 @@ import Utils.TokenParserUtil
 
 object AnalysisProvider {
 
-    fun run() {
+    fun run(ignoreCase: Boolean) {
 
         val tokens = TokenParserUtil.parse()
         val dfaTable = DFATableParserUtil.parse()
 
-        AnalysisUtil.analysis(dfaTable, tokens)
+        AnalysisUtil.analysis(dfaTable, tokens, ignoreCase)
     }
 }
 
 fun main() {
 
-    AnalysisProvider.run()
+    AnalysisProvider.run(true)
 
 }
