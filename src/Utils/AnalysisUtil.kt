@@ -40,7 +40,7 @@ object AnalysisUtil {
                                             if (it != null)
                                                 buffer.append(
                                                     "${it.Name} Detected at { LINE = ${indexLine + 1}" +
-                                                            " , INDEX = ${indexChar + 1} } " +
+                                                            " , INDEX = ${start_index + 1} } " +
                                                             " ->  \" ${line.substring(start_index, indexChar + 1)} \""
                                                 )
                                                     .append("\r\n")
