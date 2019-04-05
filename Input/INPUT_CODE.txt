@@ -1,24 +1,23 @@
 private int a = 5 
 private int b = 7
-float d = 1 
+float e = 1 
 
-var c = 1112 
+var num = 1112 
 
 Start 
 
-Var f = a > b 
-Var l = a < b 
-Var g = d == c 
-Var q = a =!= a 
+Var grater = a > b 
+Var equal = d == c 
+Var strange = a =!= a 
 
 
-print c 
+print strange 
 
-Repeat c 
+Repeat num 
 
-Var cc = Read x 
+Var input = Read x 
 
-Return cc 
+Return input 
 
 Finish 
 

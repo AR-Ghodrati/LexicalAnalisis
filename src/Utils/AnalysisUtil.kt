@@ -46,8 +46,12 @@ object AnalysisUtil {
                                                     .append("\r\n")
                                         }
                                 }
+
                             } catch (e: Exception) {
-                                buffer.append("Error Happened at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} }")
+                                buffer.append(
+                                    "Error Happened at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} } " +
+                                            " ->  \" ${line.substring(start_index, indexChar + 1)} \""
+                                )
                                     .append("\r\n")
                                 // Reset current_State
                                 current_State = 0
@@ -63,6 +67,10 @@ object AnalysisUtil {
 
     private fun isEndOfToken(dfaTable: DFATable, nextChar: Char?): Boolean {
         return dfaTable.regularStates[current_State to nextChar.toString()] == 0
+    }
+
+    private fun isFinalState(dfaTable: DFATable): Boolean {
+        return dfaTable.finalStates.any { it == current_State }
     }
 
     private fun getToken(state: Int, tokens: HashSet<Token>): Token? {
