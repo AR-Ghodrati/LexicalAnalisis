@@ -23,25 +23,14 @@ object AnalysisUtil {
                     .also { if (ignoreCase) it.toLowerCase() }
                     .forEachIndexed { indexChar, char ->
 
-
-                        println("$current_State $char")
+                        //println("$current_State $char")
                         current_State = dfaTable.regularStates[current_State to char.toString()]!!
 
-                        if (current_State == -1) {
-                            println("Error Happened at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} }")
-                            current_State = 0
-                        } else {
-
-                            if (!isEndOfToken(dfaTable, line.getOrNull(indexChar + 1))) {
-
-                            } else {
-
+                        if (isEndOfToken(dfaTable, line.getOrNull(indexChar + 1))) {
                                 val token = getToken(current_State, tokens)
-
                                 println(
                                     "${token?.Name} Detected at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} }"
                                 )
-                            }
                         }
                     }
             }
