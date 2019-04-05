@@ -1,6 +1,24 @@
 private int a = 5 
-private int b = 7 
+private int b = 7
+float d = 1 
 
 var c = 1112 
 
+Start 
+
+Var f = a > b 
+Var l = a < b 
+Var g = d == c 
+Var q = a =!= a 
+
+
 print c 
+
+Repeat c 
+
+Var cc = Read x 
+
+Return cc 
+
+Finish 
+
