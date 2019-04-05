@@ -4,10 +4,12 @@ float e = 1
 
 var num = 1112 
 
-Start 
+program test
+
+void Start
 
 Var grater = a > b 
-Var equal = d == c 
+Var equal = e == c
 Var strange = a =!= a 
 
 
@@ -15,9 +17,13 @@ print strange
 
 Repeat num 
 
-Var input = Read x 
+Var input = Read x
 
-Return input 
+do Repeat While
+
+Return input
+
+dummy x
 
 Finish 
 
