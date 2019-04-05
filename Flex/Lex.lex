@@ -13,7 +13,7 @@ Usage :
 %}
 
 DIGIT    [0-9]
-ID       [a-z][a-z0-9]*
+ID       [a-zA-z][a-zA-Z0-9]*
 
 %%
 
@@ -27,21 +27,13 @@ ID       [a-z][a-z0-9]*
                     atof( yytext ) );
             }
 
-if|then|start|finish|repeat|var|int|float|do|read|print|void|retuen|dummy|program        {
+if|then|start|finish|repeat|var|int|float|do|read|print|void|return|dummy|program        {
             printf( "A keyword: %s\n", yytext );
             }
 
 {ID}        printf( "An identifier: %s\n", yytext );
 
 "="|"=="|"=!="|"=>"   printf( "An operator: %s\n", yytext );
-
-"{"[^}\n]*"}"     /* one-line comments */
-
-[ \t\n]+          /*  whitespace */
-
-.           printf( "Unrecognized character: %s\n", yytext );
-
-end     return 0;
 
 %%
 
