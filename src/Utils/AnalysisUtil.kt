@@ -28,7 +28,7 @@ object AnalysisUtil {
                         .forEachIndexed { indexChar, char ->
 
                             try {
-                                //
+                                //Save Start Token Index
                                 if (current_State == 0)
                                     start_index = indexChar
 
@@ -49,6 +49,7 @@ object AnalysisUtil {
                             } catch (e: Exception) {
                                 buffer.append("Error Happened at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} }")
                                     .append("\r\n")
+                                // Reset current_State
                                 current_State = 0
                             }
                         }
