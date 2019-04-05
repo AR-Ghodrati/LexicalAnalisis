@@ -17,23 +17,40 @@ ID       [a-zA-z][a-zA-Z0-9]*
 
 %%
 
+
 {DIGIT}+    {
             printf( "An integer: %s (%d)\n", yytext,
                     atoi( yytext ) );
             }
+
 
 {DIGIT}+"."{DIGIT}*        {
             printf( "A float: %s (%g)\n", yytext,
                     atof( yytext ) );
             }
 
+
+{DIGIT}*+{ID}  printf( "An Error Happened: %s\n", yytext );
+
+
+
 if|then|start|finish|repeat|var|int|float|do|read|print|void|return|dummy|program        {
-            printf( "A keyword: %s\n", yytext );
+            printf( "T_%s : %s\n",yytext,yytext);
             }
+
 
 {ID}        printf( "An identifier: %s\n", yytext );
 
-"="|"=="|"=!="|"=>"   printf( "An operator: %s\n", yytext );
+
+
+"="  printf( "T_Assign : %s\n", yytext );
+
+"=="  printf( "T_Equal : %s\n", yytext );
+
+"=!="  printf( "T_StrangeNotEqual : %s\n", yytext );
+
+"=>"  printf( "T_LesserEqual : %s\n", yytext );
+
 
 %%
 
