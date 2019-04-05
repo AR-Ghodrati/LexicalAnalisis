@@ -1,1 +1,6 @@
-59aaaaaaa x = 123456
+private int a = 5 
+private int b = 7 
+
+var c = 1112 
+
+print c 

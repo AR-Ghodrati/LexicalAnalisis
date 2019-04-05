@@ -8,6 +8,8 @@ object AnalysisUtil {
 
 
     private var current_State: Int = 0 // Start State
+    private var start_index: Int = 0
+    private var buffer: StringBuffer = StringBuffer()
 
     fun analysis(dfaTable: DFATable, tokens: HashSet<Token>, ignoreCase: Boolean) {
 
@@ -18,23 +20,44 @@ object AnalysisUtil {
             .takeIf { it.exists() }
             ?.readLines()
             ?.forEachIndexed { indexLine, line ->
-                // Iterate All Chars
-                line
-                    .also { if (ignoreCase) it.toLowerCase() }
-                    .forEachIndexed { indexChar, char ->
 
-                        //println("$current_State $char")
-                        current_State = dfaTable.regularStates[current_State to char.toString()]!!
+                if (line.isNotEmpty()) {
+                    // Iterate All Chars
+                    line
+                        .also { if (ignoreCase) it.toLowerCase() }
+                        .forEachIndexed { indexChar, char ->
 
-                        if (isEndOfToken(dfaTable, line.getOrNull(indexChar + 1))) {
-                                val token = getToken(current_State, tokens)
-                                println(
-                                    "${token?.Name} Detected at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} }"
-                                )
+                            try {
+                                //
+                                if (current_State == 0)
+                                    start_index = indexChar
+
+                                current_State = dfaTable.regularStates[current_State to char.toLowerCase().toString()]!!
+
+                                if (isEndOfToken(dfaTable, line.getOrNull(indexChar + 1))) {
+                                    getToken(current_State, tokens)
+                                        .also {
+                                            if (it != null)
+                                                buffer.append(
+                                                    "${it.Name} Detected at { LINE = ${indexLine + 1}" +
+                                                            " , INDEX = ${indexChar + 1} } " +
+                                                            " ->  \" ${line.substring(start_index, indexChar + 1)} \""
+                                                )
+                                                    .append("\r\n")
+                                        }
+                                }
+                            } catch (e: Exception) {
+                                buffer.append("Error Happened at { LINE = ${indexLine + 1} , INDEX = ${indexChar + 1} }")
+                                    .append("\r\n")
+                                current_State = 0
+                            }
                         }
-                    }
+                }
+                current_State = 0 // Reset For newline
             }
 
+        println(buffer)
+        saveOutput()
     }
 
     private fun isEndOfToken(dfaTable: DFATable, nextChar: Char?): Boolean {
@@ -43,5 +66,9 @@ object AnalysisUtil {
 
     private fun getToken(state: Int, tokens: HashSet<Token>): Token? {
         return tokens.find { it.State == state }
+    }
+
+    private fun saveOutput() {
+        File("Output/AnalysisResult.txt").writeText(buffer.toString())
     }
 }
