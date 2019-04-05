@@ -11,7 +11,6 @@ object DFATableParserUtil {
 
         // Generate Tokens
         val table = DFATable()
-        var lineCount = 0
 
         println("Paring DFA Table...")
 
@@ -37,21 +36,23 @@ object DFATableParserUtil {
 
                     } else {
 
+                        val state = line
+                            .substring(3, line.indexOf('~', 3))
+                            .toInt()
+
                         line
-                            .substring(line.indexOf("("))
-                            .split("|")
+                            .substring(line.indexOf('('))
+                            .split('|')
                             .forEach {
 
                                 table.regularStates[
-                                        lineCount to it.split(',')[0]
+                                        state to it.split(',')[0]
                                             .removePrefix("(")
                                 ] = it
                                     .split(',')[1]
                                     .removeSuffix(")")
                                     .toInt()
                             }
-
-                        lineCount++
                     }
                 }
             }
