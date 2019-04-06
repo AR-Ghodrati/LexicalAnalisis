@@ -11,7 +11,7 @@ object AnalysisUtil {
     private var start_index: Int = 0
     private var buffer: StringBuffer = StringBuffer()
 
-    fun analysis(dfaTable: DFATable, tokens: HashSet<Token>, ignoreCase: Boolean) {
+    fun analysis(dfaTable: DFATable, tokens: HashSet<Token>) {
 
         println("Analysing inputCode...\r\n")
 
@@ -24,7 +24,7 @@ object AnalysisUtil {
                 if (line.isNotEmpty()) {
                     // Iterate All Chars
                     line
-                        .also { if (ignoreCase) it.toLowerCase() }
+                        .toLowerCase()
                         .forEachIndexed { indexChar, char ->
 
                             try {
@@ -32,7 +32,9 @@ object AnalysisUtil {
                                 if (current_State == 0)
                                     start_index = indexChar
 
-                                current_State = dfaTable.regularStates[current_State to char.toLowerCase().toString()]!!
+                                current_State = generateNextState(dfaTable, char)
+
+                                //println("current_State : $current_State  Char : $char")
 
                                 if (isEndOfToken(dfaTable, line.getOrNull(indexChar + 1))) {
                                     getToken(current_State, tokens)
@@ -66,11 +68,23 @@ object AnalysisUtil {
     }
 
     private fun isEndOfToken(dfaTable: DFATable, nextChar: Char?): Boolean {
-        return dfaTable.regularStates[current_State to nextChar.toString()] == 0
+        if (nextChar == null) return true
+        return (nextChar.isWhitespace())
+                && isFinalState(dfaTable)
     }
 
     private fun isFinalState(dfaTable: DFATable): Boolean {
         return dfaTable.finalStates.any { it == current_State }
+    }
+
+    private fun isLastOperand(currentChar: Char, dfaTable: DFATable, nextChar: Char?, ignoreCase: Boolean): Boolean {
+        return currentChar == '=' && generateNextState(dfaTable, nextChar) == 0
+    }
+
+    private fun generateNextState(dfaTable: DFATable, char: Char?): Int {
+        return dfaTable.regularStates[
+                current_State to char.toString()
+        ]!!
     }
 
     private fun getToken(state: Int, tokens: HashSet<Token>): Token? {

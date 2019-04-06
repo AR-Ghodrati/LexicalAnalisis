@@ -1,21 +1,21 @@
-private int a = 5 
+private int a = 5
 private int b = 7
-float e = 1 
+float e = 1
 
-var num = 1112 
+var num = 1112
 
 program test
 
 void Start
 
-Var grater = a > b 
+Var grater = a => b
 Var equal = e == c
-Var strange = a =!= a 
+Var strange = a =!= a
 
 
-print strange 
+print strange
 
-Repeat num 
+Repeat num
 
 Var input = Read x
 
@@ -25,5 +25,4 @@ Return input
 
 dummy x
 
-Finish 
-
+Finish

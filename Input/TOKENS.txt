@@ -12,7 +12,7 @@ Repeat -> 36
 Return -> 40
 Void -> 46
 Var -> 43
-Do -> 66
+Do -> 64
 Dummy -> 14
 Float -> 28
 Finish -> 24
@@ -21,13 +21,12 @@ Finish -> 24
 Assign -> 57
 Equal -> 58
 StrangeNotEqual -> 60
-LesserEqual -> 62
+GraterEqual -> 61
 
 #Checkers
 Error -> -1
-Start -> 0
-Identifier -> 63
-Identifier -> 64
+Start -> 9
+Identifier -> 62
 
 #Extra
-ConstNumber -> 65
+ConstNumber -> 63
