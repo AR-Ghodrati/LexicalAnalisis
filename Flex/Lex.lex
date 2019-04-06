@@ -30,7 +30,7 @@ ID       [a-zA-z][a-zA-Z0-9]*
             }
 
 
-{DIGIT}*+{ID}  printf( "An Error Happened: %s\n", yytext );
+{DIGIT}++{ID}  printf( "An Error Happened: %s\n", yytext );
 
 
 
