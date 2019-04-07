@@ -15,7 +15,7 @@ Var strange = a =!= a
 
 print strange
 
-Repeat num
+Repeat x = 1333
 
 Var input = Read x
 
