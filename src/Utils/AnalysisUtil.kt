@@ -82,9 +82,11 @@ object AnalysisUtil {
     }
 
     private fun generateNextState(dfaTable: DFATable, char: Char?): Int {
-        return dfaTable.regularStates[
+        dfaTable.regularStates[
                 current_State to char.toString()
-        ]!!
+        ].let {
+            return it ?: -1
+        }
     }
 
     private fun getToken(state: Int, tokens: HashSet<Token>): Token? {
