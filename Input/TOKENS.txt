@@ -7,7 +7,7 @@ Start -> 9
 Print -> 51
 Program -> 56
 Then -> 4
-Read -> 33
+Read -> 32
 Repeat -> 36
 Return -> 40
 Void -> 46
