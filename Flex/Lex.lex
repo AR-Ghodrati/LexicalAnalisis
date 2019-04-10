@@ -10,10 +10,11 @@ Usage :
 %{
 /* need this for the call to atof() below */
 #include <math.h>
+#include <string.h>
 %}
 
 DIGIT    [0-9]
-ID       [a-zA-z][a-zA-Z0-9]*
+ID       [a-zA-z][a-zA-Z0-9]*{1,8}
 
 %%
 
@@ -39,7 +40,12 @@ if|then|start|finish|repeat|var|int|float|do|read|print|void|return|dummy|progra
             }
 
 
-{ID}        printf( "An identifier: %s\n", yytext );
+{ID}       {
+                if(strlen(yytext) <= 8)
+                printf( "An identifier: %s\n", yytext );
+                else
+                printf( "An Error Happened(Long Identifier): %s\n", yytext );
+           }
 
 
 
