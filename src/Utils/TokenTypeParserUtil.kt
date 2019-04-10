@@ -1,15 +1,15 @@
 package Utils
 
-import Models.Token
+import Models.TokenType
 import java.io.File
 
-object TokenParserUtil {
+object TokenTypeParserUtil {
 
     // Read Tokens From Input/TOKENS.txt
-    fun parse(): HashSet<Token> {
+    fun parse(): HashSet<TokenType> {
 
-        val token = hashSetOf<Token>()
-        println("Parsing Tokens...")
+        val token = hashSetOf<TokenType>()
+        println("Parsing TokensList...")
 
         // Generate Tokens
         File("Input/TOKENS.txt")
@@ -19,7 +19,7 @@ object TokenParserUtil {
                 // Check If Not Comment
                 if (it.isNotEmpty() && !it.startsWith("#", false)) {
                     token.add(
-                        Token(
+                        TokenType(
                             "T_${it.split("->").first().trim().toUpperCase()}"
                             , it.split("->").last().trim().toInt()
                         )
